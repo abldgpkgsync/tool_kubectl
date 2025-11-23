@@ -40,9 +40,9 @@ jobs:
             printf -- "选中版本:\n===>  ${VNS}\n\n"
             ####
             set -- src client-linux-{386,amd64,arm,arm64,ppc64le,s390x} \
-              client-darwin-{amd,arm}64 client-windows-{386,amd64,arm64} \
-              {server,node}-linux-{amd64,arm64,ppc64le,s390x} \
-              node-windows-amd64
+              client-darwin-{amd,arm}64 client-windows-{386,amd64,arm64}
+            # set -- $@ {server,node}-linux-{amd64,arm64,ppc64le,s390x}
+            # set -- $@ node-windows-amd64
             ####
             set -- https://dl.k8s.io/${VNS}/kubernetes.tar.gz \
               $(printf "https://dl.k8s.io/${VNS}/kubernetes-%s.tar.gz\n" $@)
@@ -63,8 +63,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: dist/*
-          tag_name: "v${{ env.VNSTR }}"  # 用版本号作为tag(如v0.12.0)
-          name: "Zig v${{ env.VNSTR }} Binaries"
+          tag_name: "${{ env.VNSTR }}"  # 用版本号作为tag(如v0.12.0)
+          name: "Zig ${{ env.VNSTR }} Binaries"
           body: |
             手动从Kubectl官网同步二进制程序
             - 版本: ${{ env.VNSTR }}
