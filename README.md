@@ -1,3 +1,3 @@
-# lang_zig
+# tool_kubectl
 
-ziglang binaries sync from https://ziglang.org/download/index.json
+kubectl binaries sync from https://dl.k8s.io/VERSION/TGZ_FILENAME
