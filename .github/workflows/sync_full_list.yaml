@@ -55,7 +55,7 @@ jobs:
             done #2>/dev/null
             ##追加到环境变量中
             echo "VNSTR=${VNS}" >>${GITHUB_ENV}
-            echo "BSURL=https://dl.k8s.io/${VNS}/TGZ_FILENAME" >>${GITHUB_ENV}
+            echo "BSURL=https://dl.k8s.io/${VNS}" >>${GITHUB_ENV}
           }
           ##
           get_files_and_export_envs ${{ github.event.inputs.binvern }}
@@ -68,5 +68,5 @@ jobs:
           body: |
             手动从Kubectl官网同步二进制程序
             - 版本: ${{ env.VNSTR }}
-            - 官网下载地址: ${{ env.BSURL }}/${{ env.VNSTR }}
+            - 官网下载地址: ${{ env.BSURL }}/TGZ_FILENAME
           overwrite_files: true  # 不覆盖已有版本(避免重复发布同一版本)
